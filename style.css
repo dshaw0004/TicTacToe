@@ -26,16 +26,22 @@ header {
 /*       main up           */
 .main-up {
 	width: 100vw;
-	display: grid;
+	/* display: grid;
 	place-items: center;
 	font-size: 2.5rem;
-	flex: 1;
+	flex: 1; */
 }
 #wrong-turn {
-	/* width: ; */
+	position: absolute;
+	inset: 50% auto auto auto;
+	transform: translateY(-50%);
 	padding: 0.5em 0;
 	visibility: hidden;
 	text-align: center;
+	background-color: cyan;
+}
+#wrong-turn::backdrop {
+	background-color: blue;
 }
 
 /*       main body        */
@@ -47,61 +53,15 @@ header {
 }
 /* container */
 
-.bbox {
-	/* width: 100vh; */
-	width: min(100%, 600px);
-	display: grid;
-	place-items: center;
+.row {
+	position: relative;
+	aspect-ratio: 1/1;
+	height: 360px;
 }
-.container {
-	display: grid;
-	grid-template-columns: repeat(3, minmax(100px, 1fr));
-	grid-template-rows: repeat(3, minmax(100px, 1fr));
-	margin: 1rem auto;
-	/* width: 752px; */
-}
-.box1,
-.box2,
-.box3,
-.box4,
-.box5,
-.box6,
-.box7,
-.box8,
-.box9 {
-	border: 3px solid black;
-	container-type: inline-size;
-	font-size: 10cqw;
+.col-4 {
+	outline: 3px solid black;
+
 	text-align: center;
-	/* color: transparent; */
-}
-.box1 {
-	border-top: none;
-	border-left: none;
-}
-.box2 {
-	border-top: none;
-}
-.box3 {
-	border-top: none;
-	border-right: none;
-}
-.box4 {
-	border-left: none;
-}
-.box6 {
-	border-right: none;
-}
-.box7 {
-	border-bottom: none;
-	border-left: none;
-}
-.box8 {
-	border-bottom: none;
-}
-.box9 {
-	border-bottom: none;
-	border-right: none;
 }
 
 /* main down */
@@ -110,7 +70,8 @@ header {
 }
 
 #end {
-	display: none;
+	visibility: hidden;
+	cursor: none;
 	text-decoration: underline overline wavy;
 }
 #reset {
