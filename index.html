@@ -20,12 +20,12 @@
 			<h1 class="text-center">TicTacToe</h1>
 		</header>
 		<div class="main-up">
-			<p id="player" class="text-center fs-1">Player 1,it's your turn</p>
+			<p id="player" class="text-center fs-1">Player 1, it's your turn</p>
 		</div>
-		<main>
-			<div class="container-fluid">
+		<main class="row container-fluid">
+			<div class="container col-lg-8 mx-auto col-12">
 				<div class="row mx-auto">
-					<p id="wrong-turn" class="fs-1">Wrong turn</p>
+					<dialog id="wrong-turn" class="fs-1">Wrong turn</dialog>
 					<span class="col-4"></span>
 					<span class="col-4"></span>
 					<span class="col-4"></span>
@@ -35,11 +35,14 @@
 					<span class="col-4"></span>
 					<span class="col-4"></span>
 					<span class="col-4"></span>
+					<!-- <div id="line"></div> -->
 				</div>
 			</div>
-			<div class="main-down">
+			<div
+				class="col-lg-4 col-12 d-flex align-items-center justify-content-center flex-column"
+			>
 				<strong id="end"> </strong>
-				<button id="reset">reset</button>
+				<button id="reset" class="btn my-2">reset</button>
 			</div>
 		</main>
 		<script src="script2.js"></script>
