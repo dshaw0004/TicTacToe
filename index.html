@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width" />
-		<title>replit</title>
+		<title>Tic Tac Toe</title>
 		<link href="style.css" rel="stylesheet" type="text/css" />
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		<!-- Bootstrap CSS v5.2.1 -->
@@ -13,6 +13,8 @@
 			integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT"
 			crossorigin="anonymous"
 		/>
+		<meta name="keywords" content="TicTacToe" />
+		<meta name="author" content="dshaw0004" />
 	</head>
 
 	<body>
@@ -26,23 +28,47 @@
 			<div class="container col-lg-8 mx-auto col-12">
 				<div class="row mx-auto">
 					<dialog id="wrong-turn" class="fs-1">Wrong turn</dialog>
+					<span
+						class="col-4"
+						style="border-left: none; border-top: none"
+					></span>
+					<span class="col-4" style="border-top: none"></span>
+					<span
+						class="col-4"
+						style="border-right: none; border-top: none"
+					></span>
+					<span class="col-4" style="border-left: none"></span>
 					<span class="col-4"></span>
-					<span class="col-4"></span>
-					<span class="col-4"></span>
-					<span class="col-4"></span>
-					<span class="col-4"></span>
-					<span class="col-4"></span>
-					<span class="col-4"></span>
-					<span class="col-4"></span>
-					<span class="col-4"></span>
-					<!-- <div id="line"></div> -->
+					<span class="col-4" style="border-right: none"></span>
+					<span
+						class="col-4"
+						style="border-left: none; border-bottom: none"
+					></span>
+					<span class="col-4" style="border-bottom: none"></span>
+					<span
+						class="col-4"
+						style="border-right: none; border-bottom: none"
+					></span>
+					<div id="line"></div>
 				</div>
 			</div>
 			<div
 				class="col-lg-4 col-12 d-flex align-items-center justify-content-center flex-column"
 			>
-				<strong id="end"> </strong>
 				<button id="reset" class="btn my-2">reset</button>
+				<div class="modal fade">
+					<div class="modal-dialog modal-dialog-centered">
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="btn-close"></button>
+							</div>
+							<div class="modal-body">
+								<strong id="end"> </strong>
+								<img src="./excited.gif" alt="" style="width: 250px" />
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
 		</main>
 		<script src="script2.js"></script>

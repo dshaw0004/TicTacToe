@@ -1,93 +1,52 @@
 const boxes = document.querySelectorAll(".col-4");
 const winnername = document.getElementById("end");
-const l = document.getElementById("line");
+const line = document.getElementById("line");
 const wrongTurn = document.querySelector("#wrong-turn");
 let turn = 1;
 let gameover = false;
 
-const line = (box1, box2) => {
-	let top = box1.offsetTop + box1.clientHeight / 2;
-	let left = box1.offsetLeft + box1.clientWidth / 2;
-	l.style.top = `${top}px`;
-	l.style.left = `${left}px`;
-	l.style.bottom = `${box2.offsetTop + box2.clientHeight / 2}px`;
-	l.style.right = `${box2.offsetLeft + box2.clientWidth / 2}px`;
+const l = (box1, rotate) => {
+	line.style.top = `${box1.offsetTop + box1.clientHeight / 2}px`;
+	line.style.left = `${box1.offsetLeft + box1.clientWidth / 2}px`;
+	line.style.width = `${rotate !== 45 ? "240px" : "340px"}`;
+	line.style.height = "6.9px";
+	line.style.transform = `rotateZ(${rotate}deg)`;
 	// console.log({ top, left });
 };
 
-function winner(a, box1, box2) {
-	if (a) {
-		if (a === "X") {
-			winnername.textContent = "~~~~ player 1 wins ~~~~";
-		} else if (a === "O") {
-			winnername.textContent = "~~~~ player 2 wins ~~~~";
-		}
-		gameover = true;
-		// line(box1, box2);
+function winner(a) {
+	if (a === "X") {
+		winnername.textContent = "~~~~ player 1 wins ~~~~";
+	} else if (a === "O") {
+		winnername.textContent = "~~~~ player 2 wins ~~~~";
 	}
+	gameover = true;
+
 	winnername.style.visibility = "visible";
 }
 
 const check = () => {
-	// let box1 = boxes[0].textContent;
-	// let box2 = boxes[1].textContent;
-	// let box3 = boxes[2].textContent;
-	// let box4 = boxes[3].textContent;
-	// let box5 = boxes[4].textContent;
-	// let box6 = boxes[5].textContent;
-	// let box7 = boxes[6].textContent;
-	// let box8 = boxes[7].textContent;
-	// let box9 = boxes[8].textContent;
+	const combination = [
+		[0, 1, 2, 0],
+		[0, 3, 6, 90],
+		[0, 4, 8, 45],
+		[6, 7, 8, 0],
+		[2, 5, 8, 90],
+		[1, 4, 7, 90],
+		[3, 4, 5, 0],
+		[2, 4, 6, 135],
+	];
 
-	if (
-		boxes[0].textContent === boxes[1].textContent &&
-		boxes[0].textContent === boxes[2].textContent &&
-		boxes[0].textContent
-	) {
-		winner(boxes[0].textContent, boxes[0], boxes[2]);
-	} else if (
-		boxes[0].textContent === boxes[3].textContent &&
-		boxes[0].textContent === boxes[6].textContent &&
-		boxes[0].textContent
-	) {
-		winner(boxes[0].textContent, boxes[0], boxes[6]);
-	} else if (
-		boxes[0].textContent === boxes[4].textContent &&
-		boxes[0].textContent === boxes[8].textContent &&
-		boxes[0].textContent
-	) {
-		winner(boxes[0].textContent, boxes[0], boxes[4]);
-	} else if (
-		boxes[8].textContent === boxes[6].textContent &&
-		boxes[8].textContent === boxes[7].textContent &&
-		boxes[8].textContent
-	) {
-		winner(boxes[8].textContent, boxes[6], boxes[8]);
-	} else if (
-		boxes[8].textContent === boxes[5].textContent &&
-		boxes[8].textContent === boxes[2].textContent &&
-		boxes[8].textContent
-	) {
-		winner(boxes[8].textContent, boxes[2], boxes[8]);
-	} else if (
-		boxes[4].textContent === boxes[1].textContent &&
-		boxes[4].textContent === boxes[7].textContent &&
-		boxes[4].textContent
-	) {
-		winner(boxes[4].textContent, boxes[1], boxes[7]);
-	} else if (
-		boxes[4].textContent === boxes[3].textContent &&
-		boxes[4].textContent === boxes[5].textContent &&
-		boxes[4].textContent
-	) {
-		winner(boxes[4].textContent, boxes[3], boxes[5]);
-	} else if (
-		boxes[2].textContent === boxes[4].textContent &&
-		boxes[4].textContent === boxes[6].textContent &&
-		boxes[4].textContent
-	) {
-		winner(boxes[4].textContent, boxes[2], boxes[6]);
-	}
+	combination.forEach((c) => {
+		if (
+			boxes[c[0]].textContent === boxes[c[1]].textContent &&
+			boxes[c[0]].textContent === boxes[c[2]].textContent &&
+			boxes[c[0]].textContent
+		) {
+			winner(boxes[c[0]].textContent);
+			l(boxes[c[0]], c[3]);
+		}
+	});
 	return;
 };
 const clickFunction = async (box) => {
@@ -127,5 +86,7 @@ document.getElementById("reset").addEventListener("click", () => {
 	).textContent = `Player ${turn}, it's your turn`;
 	winnername.style.visibility = "hidden";
 	// winnername.textContent = "";
+	line.style.width = "0";
+	line.style.height = "0";
 	gameover = false;
 });

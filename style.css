@@ -53,8 +53,9 @@ header {
 	height: 360px;
 }
 .col-4 {
-	outline: 3px solid black;
-	font-size: 2rem;
+	box-sizing: border-box;
+	border: 3px solid black;
+	font-size: 5rem;
 	text-align: center;
 	aspect-ratio: 1/1;
 	height: 120px;
@@ -87,7 +88,10 @@ header {
 }
 
 #line {
-	height: 6.9px;
+	height: 0px;
 	position: absolute;
 	background-color: black;
+	transform-origin: left center;
+	width: 0px;
+	transition: width 1.6s ease-out;
 }
