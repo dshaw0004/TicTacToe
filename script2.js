@@ -1,5 +1,5 @@
 const boxes = document.querySelectorAll(".col-4");
-const winnername = document.getElementById("end");
+const winnername = document.getElementById("winner-name");
 const line = document.getElementById("line");
 const wrongTurn = document.querySelector("#wrong-turn");
 let turn = 1;
@@ -16,13 +16,13 @@ const l = (box1, rotate) => {
 
 function winner(a) {
 	if (a === "X") {
-		winnername.textContent = "~~~~ player 1 wins ~~~~";
+		winnername.textContent = "player X";
 	} else if (a === "O") {
-		winnername.textContent = "~~~~ player 2 wins ~~~~";
+		winnername.textContent = "player O";
 	}
 	gameover = true;
 
-	winnername.style.visibility = "visible";
+	document.querySelector(".dialog").show();
 }
 
 const check = () => {
@@ -89,4 +89,9 @@ document.getElementById("reset").addEventListener("click", () => {
 	line.style.width = "0";
 	line.style.height = "0";
 	gameover = false;
+	document.querySelector(".dialog").close();
+});
+
+document.querySelector(".close-dialog").addEventListener("click", () => {
+	document.querySelector(".dialog").close();
 });

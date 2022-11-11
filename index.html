@@ -56,19 +56,14 @@
 				class="col-lg-4 col-12 d-flex align-items-center justify-content-center flex-column"
 			>
 				<button id="reset" class="btn my-2">reset</button>
-				<div class="modal fade">
-					<div class="modal-dialog modal-dialog-centered">
-						<div class="modal-content">
-							<div class="modal-header">
-								<button type="button" class="btn-close"></button>
-							</div>
-							<div class="modal-body">
-								<strong id="end"> </strong>
-								<img src="./excited.gif" alt="" style="width: 250px" />
-							</div>
-						</div>
+				<dialog class="dialog mx-auto text-center" style="width: 350px">
+					<div class="speech-bubble text-center">
+						<p class="text-center">congratulation</p>
+						<strong id="winner-name"> </strong>
 					</div>
-				</div>
+					<img src="./excited.gif" alt="" style="width: 250px" />
+					<button class="btn close-dialog">close</button>
+				</dialog>
 			</div>
 		</main>
 		<script src="script2.js"></script>
